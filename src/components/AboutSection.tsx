@@ -25,10 +25,11 @@ const AboutSection = () => {
         </h2>
         <p className="mb-16 max-w-3xl text-base leading-relaxed text-muted-foreground">
           A results-driven AI Product Manager blending 8 years of IT recruitment
-          experience with technical proficiency in RAG systems and LLM
-          orchestration. Expert in bridging the gap between stakeholder
-          requirements and engineering execution, specifically in the HealthTech
-          and SaaS domains.
+          expertise with technical proficiency in RAG systems and LLM
+          orchestration. I specialize in bridging the gap between stakeholder
+          requirements and engineering execution, with a dedicated focus on
+          building high-impact, localized AI solutions for the South Indian
+          HealthTech and SaaS markets.
         </p>
 
         <h3 className="mb-8 font-heading text-xl font-semibold text-foreground">

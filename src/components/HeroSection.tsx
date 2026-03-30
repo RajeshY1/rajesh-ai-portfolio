@@ -3,9 +3,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
 
 const stats = [
-  { value: "8+", label: "Years Experience" },
-  { value: "50+", label: "Projects Delivered" },
-  { value: "12", label: "Enterprise Clients" },
+  { value: "8+", label: "Years in IT & AI" },
+  { value: "3", label: "AI Products Built" },
 ];
 
 const HeroSection = () => {
