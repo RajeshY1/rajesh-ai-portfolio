@@ -4,8 +4,8 @@ import { ArrowRight, FileText } from "lucide-react";
 
 const trustBadges = [
   "8+ Years Industry Experience",
-  "3 AI Products Launched",
-  "Specialist in Agentic Workflows",
+  "3 AI Products Architected",
+  "Transitioning into AI PM",
 ];
 
 const HeroSection = () => {
