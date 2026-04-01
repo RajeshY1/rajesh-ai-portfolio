@@ -7,7 +7,7 @@ const reasons = [
   },
   {
     icon: <Rocket className="h-6 w-6" />,
-    text: "Proven ability to build 'Zero-to-One' AI products.",
+    text: "Hands-on experience building production-ready AI prototypes.",
   },
   {
     icon: <MapPin className="h-6 w-6" />,

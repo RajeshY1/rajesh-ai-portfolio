@@ -17,7 +17,7 @@ const Footer = () => {
           </p>
 
           <Button size="lg" className="font-heading font-semibold" asChild>
-            <a href="mailto:myemail@example.com">
+            <a href="mailto:rajesh.y123@gmail.com">
               <Mail className="mr-2 h-4 w-4" />
               Schedule a Chat
             </a>
@@ -25,14 +25,14 @@ const Footer = () => {
 
           <div className="mt-10 flex items-center justify-center gap-6">
             <a
-              href="mailto:myemail@example.com"
+              href="mailto:rajesh.y123@gmail.com"
               className="text-sm text-muted-foreground transition-colors hover:text-primary"
             >
-              myemail@example.com
+              rajesh.y123@gmail.com
             </a>
             <span className="text-border">|</span>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/rajesh-y1/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground transition-colors hover:text-primary"
@@ -41,7 +41,7 @@ const Footer = () => {
               <Linkedin className="h-5 w-5" />
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/RajeshY1"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground transition-colors hover:text-primary"

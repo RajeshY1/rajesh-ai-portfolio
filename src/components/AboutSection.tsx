@@ -16,6 +16,9 @@ const AboutSection = () => {
           gives me a unique edge in leading cross-functional teams and managing
           complex stakeholder expectations.
         </p>
+        <p className="max-w-3xl mt-4 text-base leading-relaxed text-muted-foreground">
+          I have dedicated the last year to architecting end-to-end AI solutions—from PRD to Prototype—to solve real-world problems in HealthTech and Productivity, proving my readiness for an entry-level AI Product Manager role.
+        </p>
       </div>
     </section>
   );

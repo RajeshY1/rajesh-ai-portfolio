@@ -25,7 +25,7 @@ const Header = () => {
 
         <div className="flex items-center gap-3">
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/rajesh-y1/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground transition-colors hover:text-primary"
@@ -34,7 +34,7 @@ const Header = () => {
             <Linkedin className="h-5 w-5" />
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/RajeshY1"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground transition-colors hover:text-primary"
