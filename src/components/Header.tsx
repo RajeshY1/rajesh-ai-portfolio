@@ -1,7 +1,7 @@
 import { Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const navLinks = ["About", "Projects", "Contact"];
+const navLinks = ["About", "Projects", "Career", "Contact"];
 
 const Header = () => {
   return (
@@ -42,8 +42,8 @@ const Header = () => {
           >
             <Github className="h-5 w-5" />
           </a>
-          <Button size="sm" className="ml-2 font-heading font-semibold">
-            Get Started
+          <Button size="sm" className="ml-2 font-heading font-semibold" asChild>
+            <a href="#contact">Let's Talk</a>
           </Button>
         </div>
       </div>
