@@ -6,12 +6,14 @@ const Footer = () => {
     <footer id="contact" className="border-t border-border py-20">
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-2xl text-center">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
+            Contact
+          </span>
           <h2 className="mb-4 font-heading text-3xl font-bold text-foreground">
             Let's Connect
           </h2>
           <p className="mb-8 text-base leading-relaxed text-muted-foreground">
-            Open to conversations about AI product strategy, HealthTech
-            innovation, and building agentic solutions for the Indian market.
+            Open to AI Product Leadership roles in Bangalore, Hyderabad, and Chennai.
           </p>
 
           <Button size="lg" className="font-heading font-semibold" asChild>
