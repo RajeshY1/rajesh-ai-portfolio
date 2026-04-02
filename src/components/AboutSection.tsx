@@ -9,7 +9,7 @@ const AboutSection = () => {
           Strategic Vision, Technical Execution
         </h2>
         <p className="max-w-3xl text-base leading-relaxed text-muted-foreground">
-          A results-driven AI Product Manager blending nearly a decade of tech
+          A results-driven AI Product Manager blending 8 years of tech
           market intelligence with hands-on AI product architecture. I specialize
           in identifying high-value business problems and translating them into
           scalable agentic solutions. My background in technical talent strategy
