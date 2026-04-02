@@ -1,6 +1,6 @@
 import heroImg from "@/assets/hero-portrait.png";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileText } from "lucide-react";
+import { ArrowRight, Linkedin } from "lucide-react";
 
 const trustBadges = [
   "8+ Years Industry Experience",
@@ -62,9 +62,9 @@ const HeroSection = () => {
               </a>
             </Button>
             <Button size="lg" variant="outline" className="font-heading font-semibold" asChild>
-              <a href="#career">
-                <FileText className="mr-2 h-4 w-4" />
-                View Professional Journey
+              <a href="https://www.linkedin.com/in/rajesh-y1/" target="_blank" rel="noopener noreferrer">
+                <Linkedin className="mr-2 h-4 w-4" />
+                Let's Connect on LinkedIn
               </a>
             </Button>
           </div>
