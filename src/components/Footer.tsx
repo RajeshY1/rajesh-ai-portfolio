@@ -35,7 +35,7 @@ const Footer = () => {
               href="https://www.linkedin.com/in/rajesh-y1/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="text-muted-foreground transition-colors hover:text-primary hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)]"
               aria-label="LinkedIn"
             >
               <Linkedin className="h-5 w-5" />
@@ -44,7 +44,7 @@ const Footer = () => {
               href="https://github.com/RajeshY1"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="text-muted-foreground transition-colors hover:text-primary hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)]"
               aria-label="GitHub"
             >
               <Github className="h-5 w-5" />

@@ -1,6 +1,6 @@
 import heroImg from "@/assets/hero-portrait.png";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileText } from "lucide-react";
+import { ArrowRight, Linkedin } from "lucide-react";
 
 const trustBadges = [
   "8+ Years Industry Experience",
