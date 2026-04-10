@@ -1,6 +1,7 @@
 import heroImg from "@/assets/hero-portrait.png";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const trustBadges = [
   "8+ Years Industry Experience",
@@ -56,10 +57,10 @@ const HeroSection = () => {
 
           <div className="flex items-center gap-4 mt-2">
             <Button size="lg" className="group font-heading font-semibold" asChild>
-              <a href="#projects">
-                Explore Product Case Studies
+              <Link to="/case-studies">
+                Explore Case Studies
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              </Link>
             </Button>
             <Button size="lg" variant="outline" className="font-heading font-semibold" asChild>
               <a href="https://www.linkedin.com/in/rajesh-y1/" target="_blank" rel="noopener noreferrer">
