@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Activity, Brain, BarChart3, Bot, TrendingUp } from "lucide-react";
+import { ArrowLeft, Activity, Brain, BarChart3 } from "lucide-react";
 
 const caseStudies = [
   {
@@ -24,20 +24,6 @@ const caseStudies = [
     problem: "Founders and PMs spend weeks doing manual market research, competitor analysis, and feature prioritization, often relying on biased gut feelings to answer: 'Is this worth building?' and 'What do we build first?'",
     solution: "Architected an LLM-powered agentic workflow that takes user inputs (Startup Idea, Industry, Target Users) and autonomously analyzes market size, maps competitor feature gaps, and recommends data-driven business models.",
     metrics: ["Reduced MVP scoping time from 2 weeks to 4 hours", "Automatically calculates Estimated TAM (e.g., $5B)", "Outputs prioritized MVP roadmap ready for engineering handoff"],
-  },
-  {
-    icon: <Bot className="w-7 h-7" />,
-    title: "AI Customer Support Automation",
-    problem: "A growing SaaS company faced 12-hour average response times and declining CSAT scores due to ticket volume outpacing the support team.",
-    solution: "Deployed an LLM-powered support agent with intent classification, knowledge-base retrieval, and human escalation routing — handling 70% of L1 tickets autonomously.",
-    metrics: ["70% L1 ticket auto-resolution rate", "Average response time reduced from 12 hrs to < 2 min", "CSAT improved from 3.2 to 4.6 / 5"],
-  },
-  {
-    icon: <TrendingUp className="w-7 h-7" />,
-    title: "SaaS Predictive Churn Model",
-    problem: "A B2B SaaS platform was losing 8% MRR monthly with no early-warning system to identify at-risk accounts before cancellation.",
-    solution: "Built a predictive churn pipeline using behavioral signals (login frequency, feature adoption, support tickets) with an XGBoost model surfacing risk scores in a PM dashboard.",
-    metrics: ["Churn prediction accuracy: 87% (30-day window)", "Proactive outreach reduced churn by 23%", "Identified top 5 churn drivers for product roadmap"],
   },
 ];
 
