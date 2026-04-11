@@ -57,23 +57,23 @@ const projects: ProjectData[] = [
     },
   },
   {
-    title: "Data Analyst Agent",
+    title: "AI Product Strategy Agent",
     icon: <BarChart3 className="w-6 h-6" />,
-    problem: "Static market data",
-    aiSolution: "Multi-agent SWOT automation",
-    impact: "Real-time strategic intelligence",
+    problem: "Weeks of manual market research & biased MVP scoping",
+    aiSolution: "LLM-powered agentic Go-To-Market workflow",
+    impact: "Reduced MVP scoping from 2 weeks to 4 hours",
     prd: {
-      title: "Data Analyst Agent — Product Requirements",
+      title: "AI Product Strategy Agent — Product Requirements",
       sections: [
-        { heading: "Agentic Workflow", content: "Multi-step ReAct loop: Plan → Execute → Observe → Reflect. The agent autonomously decides which tools to call based on the dataset schema and user's natural-language query. Supports iterative refinement — if a chart doesn't answer the question, the agent re-queries with adjusted parameters." },
-        { heading: "Tool-Calling (Matplotlib / Pandas)", content: "Sandboxed Python execution environment with pre-loaded Pandas, NumPy, Matplotlib, Seaborn, and Plotly. The agent generates and executes code, captures outputs (DataFrames, charts), and presents them inline. Guardrails prevent destructive operations and enforce memory limits." },
-        { heading: "Insight Summarization", content: "After generating visualizations, the agent produces a 3–5 bullet executive summary highlighting key trends, anomalies, and actionable recommendations. Summaries are calibrated for C-suite readability with optional drill-down into methodology." },
-        { heading: "Safety Guardrails", content: "• Sandboxed execution with no network access from code cells.\n• PII detection and masking before data processing.\n• All generated insights include methodology transparency notes." },
+        { heading: "Agentic Workflow", content: "Takes user inputs (Startup Idea, Industry, Target Users) and autonomously analyzes market size, maps competitor feature gaps, and recommends data-driven business models. Multi-step reasoning with iterative refinement ensures comprehensive strategic output." },
+        { heading: "Market Opportunity Analysis", content: "Automatically calculates Estimated TAM (e.g., $5B) based on industry inputs. Leverages real-time data sources and LLM reasoning to size addressable markets and identify growth vectors." },
+        { heading: "Competitor Intelligence", content: "Identifies top competitors (Company A, Company B) and highlights their weak points. Maps feature gaps across the competitive landscape to surface differentiation opportunities." },
+        { heading: "MVP Feature Prioritization", content: "Outputs a prioritized product roadmap (1. AI Assistant, 2. Analytics Dashboard, 3. Smart Notifications) ready for engineering handoff. Features are ranked by impact, feasibility, and alignment with identified market gaps." },
       ],
     },
     useCase: {
       title: "Killer Use Case",
-      content: "A SaaS founder uploads their Stripe revenue CSV and asks 'Show me churn trends by cohort' — the agent cleans the data, generates a cohort heatmap, and summarizes: 'Q3 2025 cohorts show 15% lower churn after onboarding redesign.' Real-time strategic intelligence without needing a data science team.",
+      content: "A founder types in their startup idea, target industry, and user persona — the AI Product Strategy Agent autonomously calculates a $5B TAM, identifies top competitors and their weak points, and outputs a prioritized MVP roadmap ready for engineering handoff — all in under 4 hours instead of 2 weeks of manual research.",
     },
   },
 ];
