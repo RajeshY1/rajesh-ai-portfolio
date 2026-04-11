@@ -20,10 +20,10 @@ const caseStudies = [
   },
   {
     icon: <BarChart3 className="w-7 h-7" />,
-    title: "Data Analyst Agent — Autonomous SWOT Intelligence",
-    problem: "Founders and operators lack data science teams to extract actionable insights from revenue, churn, and market data.",
-    solution: "Architected a multi-agent ReAct loop that autonomously cleans data, generates cohort heatmaps, and produces C-suite-ready executive summaries.",
-    metrics: ["Real-time strategic intelligence from raw CSVs", "Auto-generated cohort analysis & visualizations", "PII detection and sandboxed execution"],
+    title: "AI Product Strategy Agent — Automated Go-To-Market & MVP Scoping",
+    problem: "Founders and PMs spend weeks doing manual market research, competitor analysis, and feature prioritization, often relying on biased gut feelings to answer: 'Is this worth building?' and 'What do we build first?'",
+    solution: "Architected an LLM-powered agentic workflow that takes user inputs (Startup Idea, Industry, Target Users) and autonomously analyzes market size, maps competitor feature gaps, and recommends data-driven business models.",
+    metrics: ["Reduced MVP scoping time from 2 weeks to 4 hours", "Automatically calculates Estimated TAM (e.g., $5B)", "Outputs prioritized MVP roadmap ready for engineering handoff"],
   },
   {
     icon: <Bot className="w-7 h-7" />,
