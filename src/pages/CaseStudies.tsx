@@ -3,6 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Activity, Brain, BarChart3 } from "lucide-react";
 
+import arogyaImg1 from "@/assets/arogya-mitra-1.jpeg";
+import arogyaImg2 from "@/assets/arogya-mitra-2.jpeg";
+import arogyaImg3 from "@/assets/arogya-mitra-3.jpeg";
+import arogyaImg4 from "@/assets/arogya-mitra-4.jpeg";
+import arogyaImg5 from "@/assets/arogya-mitra-5.jpeg";
+import arogyaImg6 from "@/assets/arogya-mitra-6.jpeg";
+import arogyaImg7 from "@/assets/arogya-mitra-7.jpeg";
+
 const caseStudies = [
   {
     icon: <Activity className="w-7 h-7" />,
@@ -10,6 +18,7 @@ const caseStudies = [
     problem: "Over 60% of rural patients in South India cannot read English-language prescriptions, leading to dangerous medication errors.",
     solution: "Built an OCR + Multilingual LLM pipeline that photographs prescriptions and translates them into Telugu, Kannada, and Tamil with voice playback for low-literacy users.",
     metrics: ["95% translation accuracy validated by pharmacists", "Voice playback for low-literacy users", "Works offline after initial model download"],
+    images: [arogyaImg1, arogyaImg2, arogyaImg3, arogyaImg4, arogyaImg5, arogyaImg6, arogyaImg7],
   },
   {
     icon: <Brain className="w-7 h-7" />,
@@ -17,6 +26,7 @@ const caseStudies = [
     problem: "Product managers spend 40%+ of their time manually drafting PRDs by searching through scattered Confluence, Notion, and Slack documentation.",
     solution: "Designed a context-aware RAG system with hybrid retrieval (semantic + BM25), Cohere re-ranking, and citation-linked responses that auto-generates structured PRDs.",
     metrics: ["40% reduction in PRD drafting time", "Sub-30-second document generation", "Citation-linked outputs with source previews"],
+    images: [] as string[],
   },
   {
     icon: <BarChart3 className="w-7 h-7" />,
@@ -24,6 +34,7 @@ const caseStudies = [
     problem: "Founders and PMs spend weeks doing manual market research, competitor analysis, and feature prioritization, often relying on biased gut feelings to answer: 'Is this worth building?' and 'What do we build first?'",
     solution: "Architected an LLM-powered agentic workflow that takes user inputs (Startup Idea, Industry, Target Users) and autonomously analyzes market size, maps competitor feature gaps, and recommends data-driven business models.",
     metrics: ["Reduced MVP scoping time from 2 weeks to 4 hours", "Automatically calculates Estimated TAM (e.g., $5B)", "Outputs prioritized MVP roadmap ready for engineering handoff"],
+    images: [] as string[],
   },
 ];
 
@@ -96,6 +107,16 @@ const CaseStudies = () => {
                           ))}
                         </ul>
                       </div>
+                      {cs.images.length > 0 && (
+                        <div>
+                          <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 font-heading">Screenshots</h4>
+                          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            {cs.images.map((img, i) => (
+                              <img key={i} src={img} alt={`${cs.title} screenshot ${i + 1}`} className="w-full h-auto rounded-lg shadow-md border border-border object-cover" />
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                 </div>
