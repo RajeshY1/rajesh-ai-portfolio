@@ -107,6 +107,16 @@ const CaseStudies = () => {
                           ))}
                         </ul>
                       </div>
+                      {cs.images.length > 0 && (
+                        <div>
+                          <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 font-heading">Screenshots</h4>
+                          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            {cs.images.map((img, i) => (
+                              <img key={i} src={img} alt={`${cs.title} screenshot ${i + 1}`} className="w-full h-auto rounded-lg shadow-md border border-border object-cover" />
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                 </div>
