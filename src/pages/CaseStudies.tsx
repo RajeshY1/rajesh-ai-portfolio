@@ -11,6 +11,14 @@ import arogyaImg5 from "@/assets/arogya-mitra-5.jpeg";
 import arogyaImg6 from "@/assets/arogya-mitra-6.jpeg";
 import arogyaImg7 from "@/assets/arogya-mitra-7.jpeg";
 
+import pmRag1 from "@/assets/pm-rag-1.png";
+import pmRag2 from "@/assets/pm-rag-2.png";
+import pmRag3 from "@/assets/pm-rag-3.png";
+import pmRag4 from "@/assets/pm-rag-4.png";
+
+import strategyAgent1 from "@/assets/strategy-agent-1.png";
+import strategyAgent2 from "@/assets/strategy-agent-2.png";
+
 const caseStudies = [
   {
     icon: <Activity className="w-7 h-7" />,
@@ -26,7 +34,7 @@ const caseStudies = [
     problem: "Product managers spend 40%+ of their time manually drafting PRDs by searching through scattered Confluence, Notion, and Slack documentation.",
     solution: "Designed a context-aware RAG system with hybrid retrieval (semantic + BM25), Cohere re-ranking, and citation-linked responses that auto-generates structured PRDs.",
     metrics: ["40% reduction in PRD drafting time", "Sub-30-second document generation", "Citation-linked outputs with source previews"],
-    images: [] as string[],
+    images: [pmRag1, pmRag2, pmRag3, pmRag4],
   },
   {
     icon: <BarChart3 className="w-7 h-7" />,
@@ -34,7 +42,7 @@ const caseStudies = [
     problem: "Founders and PMs spend weeks doing manual market research, competitor analysis, and feature prioritization, often relying on biased gut feelings to answer: 'Is this worth building?' and 'What do we build first?'",
     solution: "Architected an LLM-powered agentic workflow that takes user inputs (Startup Idea, Industry, Target Users) and autonomously analyzes market size, maps competitor feature gaps, and recommends data-driven business models.",
     metrics: ["Reduced MVP scoping time from 2 weeks to 4 hours", "Automatically calculates Estimated TAM (e.g., $5B)", "Outputs prioritized MVP roadmap ready for engineering handoff"],
-    images: [] as string[],
+    images: [strategyAgent1, strategyAgent2],
   },
 ];
 
