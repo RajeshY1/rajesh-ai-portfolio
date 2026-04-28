@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Activity, Brain, BarChart3, ShieldCheck, Search, Eye, ClipboardCheck, Wrench, ShieldAlert, Volume2, AudioWaveform } from "lucide-react";
+import { ArrowLeft, Activity, Brain, BarChart3, ShieldCheck } from "lucide-react";
 
 import arogyaImg1 from "@/assets/arogya-mitra-1.jpeg";
 import arogyaImg2 from "@/assets/arogya-mitra-2.jpeg";
@@ -20,9 +20,6 @@ import pmRag4 from "@/assets/pm-rag-4.png";
 import strategyAgent1 from "@/assets/strategy-agent-1.png";
 import strategyAgent2 from "@/assets/strategy-agent-2.png";
 
-import dpdpDashboard from "@/assets/dpdp-agentic-dashboard.png";
-import dpdpJira from "@/assets/dpdp-jira-workflow.png";
-
 const caseStudies = [
   {
     id: "dpdp-sentinel",
@@ -31,9 +28,8 @@ const caseStudies = [
     problem: "Indian enterprises face penalties up to ₹250 Cr under the new DPDP Act, but most consent forms and support transcripts are in regional languages — making manual PII audits impossibly slow.",
     solution: "Architected a Council of Agents (Crawler, Detective, Auditor, Remediation) that automates PII detection across 6 Indic languages and generates auto-remediation Jira tickets — gated by a Human-Authorized Remediation step.",
     metrics: ["90% reduction in compliance auditing time", "100% coverage of Indic-language consent forms", "Compliance Health Score adopted as board-level KPI"],
-    images: [dpdpDashboard, dpdpJira],
-    pendingAssets: ["Multilingual Audit"],
-    featured: true,
+    images: [] as string[],
+    imageSlots: 2,
   },
   {
     icon: <Activity className="w-7 h-7" />,
@@ -60,85 +56,6 @@ const caseStudies = [
     images: [strategyAgent1, strategyAgent2],
   },
 ];
-
-const VOICE_SUMMARIES: Record<string, string> = {
-  Telugu: "డిపిడిపి చట్టం ప్రకారం, మీ సంస్థ యొక్క కంప్లయన్స్ హెల్త్ స్కోర్ 87/100. 312 రెమిడియేషన్ టిక్కెట్‌లు సమీక్ష కోసం సిద్ధంగా ఉన్నాయి.",
-  Tamil: "டிபிடிபி சட்டத்தின் கீழ், உங்கள் நிறுவனத்தின் இணக்க சுகாதார மதிப்பெண் 87/100. 312 தீர்வு டிக்கெட்டுகள் மதிப்பாய்வுக்கு தயாராக உள்ளன.",
-  Kannada: "ಡಿಪಿಡಿಪಿ ಕಾಯ್ದೆಯಡಿ, ನಿಮ್ಮ ಸಂಸ್ಥೆಯ ಅನುಸರಣೆ ಆರೋಗ್ಯ ಸ್ಕೋರ್ 87/100. 312 ಪರಿಹಾರ ಟಿಕೆಟ್‌ಗಳು ಪರಿಶೀಲನೆಗೆ ಸಿದ್ಧವಾಗಿವೆ.",
-  Malayalam: "ഡിപിഡിപി നിയമപ്രകാരം, നിങ്ങളുടെ സ്ഥാപനത്തിന്റെ കംപ്ലയൻസ് ഹെൽത്ത് സ്കോർ 87/100 ആണ്. 312 പരിഹാര ടിക്കറ്റുകൾ അവലോകനത്തിന് തയ്യാറാണ്.",
-  Hindi: "डीपीडीपी अधिनियम के तहत, आपके संगठन का अनुपालन स्वास्थ्य स्कोर 87/100 है। समीक्षा हेतु 312 निवारण टिकट तैयार हैं।",
-  English: "Under the DPDP Act, your organization's Compliance Health Score is 87/100. 312 remediation tickets are queued for DPO review.",
-};
-
-const AGENTS = [
-  { name: "Crawler", icon: <Search className="w-5 h-5" />, desc: "Discovers data sources" },
-  { name: "Detective", icon: <Eye className="w-5 h-5" />, desc: "Detects PII in 6 Indic languages" },
-  { name: "Auditor", icon: <ClipboardCheck className="w-5 h-5" />, desc: "Maps to DPDP clauses & scores" },
-  { name: "Remediation", icon: <Wrench className="w-5 h-5" />, desc: "Drafts auto-remediation tickets" },
-];
-
-const DpdpVoiceHub = () => {
-  const [lang, setLang] = useState<keyof typeof VOICE_SUMMARIES>("English");
-  const [playing, setPlaying] = useState(false);
-
-  useEffect(() => {
-    if (!playing) return;
-    const t = setTimeout(() => setPlaying(false), 4000);
-    return () => clearTimeout(t);
-  }, [playing]);
-
-  return (
-    <div className="rounded-xl border border-violet-500/20 bg-gradient-to-br from-indigo-500/5 to-violet-500/5 p-5">
-      <div className="flex items-center gap-2 mb-3">
-        <Volume2 className="w-5 h-5 text-violet-400" />
-        <h4 className="text-sm font-semibold uppercase tracking-wider text-violet-400 font-heading">Multilingual Voice Audit Hub</h4>
-      </div>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {(Object.keys(VOICE_SUMMARIES) as Array<keyof typeof VOICE_SUMMARIES>).map((l) => (
-          <button
-            key={l}
-            onClick={() => setLang(l)}
-            className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
-              lang === l
-                ? "bg-gradient-to-r from-indigo-500 to-violet-500 text-white"
-                : "bg-secondary text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            {l}
-          </button>
-        ))}
-      </div>
-      <div className="rounded-lg border border-border/40 bg-background/40 p-4 mb-3 min-h-[80px]">
-        <p className="text-foreground/90 text-sm leading-relaxed">{VOICE_SUMMARIES[lang]}</p>
-      </div>
-      <div className="flex items-center gap-3">
-        <Button
-          size="sm"
-          onClick={() => setPlaying(true)}
-          className="gap-2 bg-gradient-to-r from-indigo-500 to-violet-500 text-white hover:opacity-90"
-        >
-          <Volume2 className="w-4 h-4" />
-          Play Voice Summary
-        </Button>
-        {playing && (
-          <div className="flex items-center gap-2 text-violet-400">
-            <AudioWaveform className="w-5 h-5 animate-pulse" />
-            <div className="flex items-end gap-0.5 h-5">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <span
-                  key={i}
-                  className="w-1 bg-violet-400 rounded-full animate-pulse"
-                  style={{ height: `${30 + (i % 3) * 25}%`, animationDelay: `${i * 120}ms` }}
-                />
-              ))}
-            </div>
-            <span className="text-xs">Playing in {lang}…</span>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
 
 const CaseStudies = () => {
   useEffect(() => {
@@ -189,13 +106,7 @@ const CaseStudies = () => {
                   {/* Timeline dot */}
                   <div className="absolute left-6 top-8 h-4 w-4 rounded-full border-2 border-primary bg-background hidden md:block" />
 
-                  <Card
-                    className={
-                      (cs as any).featured
-                        ? "bg-card/60 backdrop-blur border-2 border-transparent [background:linear-gradient(hsl(var(--card)/0.6),hsl(var(--card)/0.6))_padding-box,linear-gradient(135deg,#6366f1,#8b5cf6)_border-box] transition-all duration-300 hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.4)]"
-                        : "bg-card/60 backdrop-blur border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.15)]"
-                    }
-                  >
+                  <Card className="bg-card/60 backdrop-blur border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.15)]">
                     <CardHeader>
                       <div className="flex items-center gap-3 mb-1">
                         <div className="p-2.5 rounded-lg bg-primary/10 text-primary">{cs.icon}</div>
@@ -222,34 +133,6 @@ const CaseStudies = () => {
                           ))}
                         </ul>
                       </div>
-                      {(cs as any).featured && (
-                        <>
-                          <div>
-                            <h4 className="text-xs font-semibold uppercase tracking-wider text-violet-400 mb-3 font-heading">Architecture — Council of Agents</h4>
-                            <div className="flex flex-col sm:flex-row items-stretch gap-2">
-                              {AGENTS.map((a, i) => (
-                                <div key={a.name} className="flex items-center gap-2 flex-1">
-                                  <div className="flex-1 rounded-lg border border-violet-500/20 bg-gradient-to-br from-indigo-500/5 to-violet-500/5 p-3">
-                                    <div className="flex items-center gap-2 mb-1 text-violet-400">{a.icon}<span className="text-sm font-semibold text-foreground">{a.name}</span></div>
-                                    <p className="text-xs text-muted-foreground">{a.desc}</p>
-                                  </div>
-                                  {i < AGENTS.length - 1 && <span className="hidden sm:block text-violet-400">→</span>}
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                          <div className="rounded-xl border-2 border-violet-500/40 bg-gradient-to-r from-indigo-500/10 to-violet-500/10 p-4">
-                            <div className="flex items-start gap-3">
-                              <ShieldAlert className="w-6 h-6 text-violet-400 shrink-0 mt-0.5" />
-                              <div>
-                                <h4 className="text-sm font-bold uppercase tracking-wider text-violet-300 mb-1 font-heading">Human-Authorized Remediation Gate</h4>
-                                <p className="text-foreground/90 text-sm leading-relaxed">Every Remediation Agent ticket is blocked behind an explicit DPO approval. <strong className="text-foreground">Zero auto-mutations</strong> reach production data without a cryptographically signed human sign-off.</p>
-                              </div>
-                            </div>
-                          </div>
-                          <DpdpVoiceHub />
-                        </>
-                      )}
                       {cs.images.length > 0 && (
                         <div>
                           <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 font-heading">Screenshots</h4>
@@ -260,21 +143,14 @@ const CaseStudies = () => {
                           </div>
                         </div>
                       )}
-                      {cs.images.length === 0 && (cs as any).pendingAssets && (
-                        <div className="rounded-xl border-2 border-dashed border-violet-500/40 bg-violet-500/5 p-5">
-                          <h4 className="text-xs font-semibold uppercase tracking-wider text-violet-300 mb-2 font-heading">Awaiting Screenshots — Human-in-the-Loop</h4>
-                          <p className="text-foreground/80 text-sm leading-relaxed mb-3">
-                            Project updated. Please upload the {(cs as any).pendingAssets.length} screenshots for this project to complete the portfolio update.
-                          </p>
-                          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            {((cs as any).pendingAssets as string[]).map((label, i) => (
-                              <li key={i} className="rounded-lg border border-border/60 bg-background/40 p-4 text-center">
-                                <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Slot {i + 1}</div>
-                                <div className="text-sm font-semibold text-foreground">{label}</div>
-                                <div className="text-[11px] text-violet-300/80 mt-2">Upload pending</div>
-                              </li>
+                      {cs.images.length === 0 && (cs as any).imageSlots && (
+                        <div>
+                          <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 font-heading">Screenshots</h4>
+                          <div className="grid grid-cols-2 gap-3">
+                            {Array.from({ length: (cs as any).imageSlots as number }).map((_, i) => (
+                              <div key={i} className="aspect-video rounded-lg border border-border bg-secondary/30" />
                             ))}
-                          </ul>
+                          </div>
                         </div>
                       )}
                     </CardContent>
