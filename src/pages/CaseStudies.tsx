@@ -185,13 +185,7 @@ const CaseStudies = () => {
                   {/* Timeline dot */}
                   <div className="absolute left-6 top-8 h-4 w-4 rounded-full border-2 border-primary bg-background hidden md:block" />
 
-                  <Card
-                    className={
-                      (cs as any).featured
-                        ? "bg-card/60 backdrop-blur border-2 border-transparent [background:linear-gradient(hsl(var(--card)/0.6),hsl(var(--card)/0.6))_padding-box,linear-gradient(135deg,#6366f1,#8b5cf6)_border-box] transition-all duration-300 hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.4)]"
-                        : "bg-card/60 backdrop-blur border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.15)]"
-                    }
-                  >
+                  <Card className="bg-card/60 backdrop-blur border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.15)]">
                     <CardHeader>
                       <div className="flex items-center gap-3 mb-1">
                         <div className="p-2.5 rounded-lg bg-primary/10 text-primary">{cs.icon}</div>
@@ -218,34 +212,6 @@ const CaseStudies = () => {
                           ))}
                         </ul>
                       </div>
-                      {(cs as any).featured && (
-                        <>
-                          <div>
-                            <h4 className="text-xs font-semibold uppercase tracking-wider text-violet-400 mb-3 font-heading">Architecture — Council of Agents</h4>
-                            <div className="flex flex-col sm:flex-row items-stretch gap-2">
-                              {AGENTS.map((a, i) => (
-                                <div key={a.name} className="flex items-center gap-2 flex-1">
-                                  <div className="flex-1 rounded-lg border border-violet-500/20 bg-gradient-to-br from-indigo-500/5 to-violet-500/5 p-3">
-                                    <div className="flex items-center gap-2 mb-1 text-violet-400">{a.icon}<span className="text-sm font-semibold text-foreground">{a.name}</span></div>
-                                    <p className="text-xs text-muted-foreground">{a.desc}</p>
-                                  </div>
-                                  {i < AGENTS.length - 1 && <span className="hidden sm:block text-violet-400">→</span>}
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                          <div className="rounded-xl border-2 border-violet-500/40 bg-gradient-to-r from-indigo-500/10 to-violet-500/10 p-4">
-                            <div className="flex items-start gap-3">
-                              <ShieldAlert className="w-6 h-6 text-violet-400 shrink-0 mt-0.5" />
-                              <div>
-                                <h4 className="text-sm font-bold uppercase tracking-wider text-violet-300 mb-1 font-heading">Human-Authorized Remediation Gate</h4>
-                                <p className="text-foreground/90 text-sm leading-relaxed">Every Remediation Agent ticket is blocked behind an explicit DPO approval. <strong className="text-foreground">Zero auto-mutations</strong> reach production data without a cryptographically signed human sign-off.</p>
-                              </div>
-                            </div>
-                          </div>
-                          <DpdpVoiceHub />
-                        </>
-                      )}
                       {cs.images.length > 0 && (
                         <div>
                           <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 font-heading">Screenshots</h4>
@@ -256,21 +222,14 @@ const CaseStudies = () => {
                           </div>
                         </div>
                       )}
-                      {cs.images.length === 0 && (cs as any).pendingAssets && (
-                        <div className="rounded-xl border-2 border-dashed border-violet-500/40 bg-violet-500/5 p-5">
-                          <h4 className="text-xs font-semibold uppercase tracking-wider text-violet-300 mb-2 font-heading">Awaiting Screenshots — Human-in-the-Loop</h4>
-                          <p className="text-foreground/80 text-sm leading-relaxed mb-3">
-                            Project updated. Please upload the {(cs as any).pendingAssets.length} screenshots for this project to complete the portfolio update.
-                          </p>
-                          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            {((cs as any).pendingAssets as string[]).map((label, i) => (
-                              <li key={i} className="rounded-lg border border-border/60 bg-background/40 p-4 text-center">
-                                <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Slot {i + 1}</div>
-                                <div className="text-sm font-semibold text-foreground">{label}</div>
-                                <div className="text-[11px] text-violet-300/80 mt-2">Upload pending</div>
-                              </li>
+                      {cs.images.length === 0 && (cs as any).imageSlots && (
+                        <div>
+                          <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 font-heading">Screenshots</h4>
+                          <div className="grid grid-cols-2 gap-3">
+                            {Array.from({ length: (cs as any).imageSlots as number }).map((_, i) => (
+                              <div key={i} className="aspect-video rounded-lg border border-border bg-secondary/30" />
                             ))}
-                          </ul>
+                          </div>
                         </div>
                       )}
                     </CardContent>
