@@ -261,6 +261,23 @@ const CaseStudies = () => {
                           </div>
                         </div>
                       )}
+                      {cs.images.length === 0 && (cs as any).pendingAssets && (
+                        <div className="rounded-xl border-2 border-dashed border-violet-500/40 bg-violet-500/5 p-5">
+                          <h4 className="text-xs font-semibold uppercase tracking-wider text-violet-300 mb-2 font-heading">Awaiting Screenshots — Human-in-the-Loop</h4>
+                          <p className="text-foreground/80 text-sm leading-relaxed mb-3">
+                            Project updated. Please upload the {(cs as any).pendingAssets.length} screenshots for this project to complete the portfolio update.
+                          </p>
+                          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            {((cs as any).pendingAssets as string[]).map((label, i) => (
+                              <li key={i} className="rounded-lg border border-border/60 bg-background/40 p-4 text-center">
+                                <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Slot {i + 1}</div>
+                                <div className="text-sm font-semibold text-foreground">{label}</div>
+                                <div className="text-[11px] text-violet-300/80 mt-2">Upload pending</div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                 </div>
