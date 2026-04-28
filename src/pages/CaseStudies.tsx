@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Activity, Brain, BarChart3, ShieldCheck, Search, Eye, ClipboardCheck, Wrench, ShieldAlert, Volume2, AudioWaveform } from "lucide-react";
+import { ArrowLeft, Activity, Brain, BarChart3, ShieldCheck } from "lucide-react";
 
 import arogyaImg1 from "@/assets/arogya-mitra-1.jpeg";
 import arogyaImg2 from "@/assets/arogya-mitra-2.jpeg";
@@ -56,85 +56,6 @@ const caseStudies = [
     images: [strategyAgent1, strategyAgent2],
   },
 ];
-
-const VOICE_SUMMARIES: Record<string, string> = {
-  Telugu: "డిపిడిపి చట్టం ప్రకారం, మీ సంస్థ యొక్క కంప్లయన్స్ హెల్త్ స్కోర్ 87/100. 312 రెమిడియేషన్ టిక్కెట్‌లు సమీక్ష కోసం సిద్ధంగా ఉన్నాయి.",
-  Tamil: "டிபிடிபி சட்டத்தின் கீழ், உங்கள் நிறுவனத்தின் இணக்க சுகாதார மதிப்பெண் 87/100. 312 தீர்வு டிக்கெட்டுகள் மதிப்பாய்வுக்கு தயாராக உள்ளன.",
-  Kannada: "ಡಿಪಿಡಿಪಿ ಕಾಯ್ದೆಯಡಿ, ನಿಮ್ಮ ಸಂಸ್ಥೆಯ ಅನುಸರಣೆ ಆರೋಗ್ಯ ಸ್ಕೋರ್ 87/100. 312 ಪರಿಹಾರ ಟಿಕೆಟ್‌ಗಳು ಪರಿಶೀಲನೆಗೆ ಸಿದ್ಧವಾಗಿವೆ.",
-  Malayalam: "ഡിപിഡിപി നിയമപ്രകാരം, നിങ്ങളുടെ സ്ഥാപനത്തിന്റെ കംപ്ലയൻസ് ഹെൽത്ത് സ്കോർ 87/100 ആണ്. 312 പരിഹാര ടിക്കറ്റുകൾ അവലോകനത്തിന് തയ്യാറാണ്.",
-  Hindi: "डीपीडीपी अधिनियम के तहत, आपके संगठन का अनुपालन स्वास्थ्य स्कोर 87/100 है। समीक्षा हेतु 312 निवारण टिकट तैयार हैं।",
-  English: "Under the DPDP Act, your organization's Compliance Health Score is 87/100. 312 remediation tickets are queued for DPO review.",
-};
-
-const AGENTS = [
-  { name: "Crawler", icon: <Search className="w-5 h-5" />, desc: "Discovers data sources" },
-  { name: "Detective", icon: <Eye className="w-5 h-5" />, desc: "Detects PII in 6 Indic languages" },
-  { name: "Auditor", icon: <ClipboardCheck className="w-5 h-5" />, desc: "Maps to DPDP clauses & scores" },
-  { name: "Remediation", icon: <Wrench className="w-5 h-5" />, desc: "Drafts auto-remediation tickets" },
-];
-
-const DpdpVoiceHub = () => {
-  const [lang, setLang] = useState<keyof typeof VOICE_SUMMARIES>("English");
-  const [playing, setPlaying] = useState(false);
-
-  useEffect(() => {
-    if (!playing) return;
-    const t = setTimeout(() => setPlaying(false), 4000);
-    return () => clearTimeout(t);
-  }, [playing]);
-
-  return (
-    <div className="rounded-xl border border-violet-500/20 bg-gradient-to-br from-indigo-500/5 to-violet-500/5 p-5">
-      <div className="flex items-center gap-2 mb-3">
-        <Volume2 className="w-5 h-5 text-violet-400" />
-        <h4 className="text-sm font-semibold uppercase tracking-wider text-violet-400 font-heading">Multilingual Voice Audit Hub</h4>
-      </div>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {(Object.keys(VOICE_SUMMARIES) as Array<keyof typeof VOICE_SUMMARIES>).map((l) => (
-          <button
-            key={l}
-            onClick={() => setLang(l)}
-            className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
-              lang === l
-                ? "bg-gradient-to-r from-indigo-500 to-violet-500 text-white"
-                : "bg-secondary text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            {l}
-          </button>
-        ))}
-      </div>
-      <div className="rounded-lg border border-border/40 bg-background/40 p-4 mb-3 min-h-[80px]">
-        <p className="text-foreground/90 text-sm leading-relaxed">{VOICE_SUMMARIES[lang]}</p>
-      </div>
-      <div className="flex items-center gap-3">
-        <Button
-          size="sm"
-          onClick={() => setPlaying(true)}
-          className="gap-2 bg-gradient-to-r from-indigo-500 to-violet-500 text-white hover:opacity-90"
-        >
-          <Volume2 className="w-4 h-4" />
-          Play Voice Summary
-        </Button>
-        {playing && (
-          <div className="flex items-center gap-2 text-violet-400">
-            <AudioWaveform className="w-5 h-5 animate-pulse" />
-            <div className="flex items-end gap-0.5 h-5">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <span
-                  key={i}
-                  className="w-1 bg-violet-400 rounded-full animate-pulse"
-                  style={{ height: `${30 + (i % 3) * 25}%`, animationDelay: `${i * 120}ms` }}
-                />
-              ))}
-            </div>
-            <span className="text-xs">Playing in {lang}…</span>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
 
 const CaseStudies = () => {
   useEffect(() => {
