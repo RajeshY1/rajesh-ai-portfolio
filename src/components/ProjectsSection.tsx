@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { FileText, Lightbulb, Activity, Brain, BarChart3 } from "lucide-react";
+import { FileText, Lightbulb, Activity, Brain, BarChart3, ShieldCheck } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface ProjectData {
   title: string;
@@ -12,9 +13,38 @@ interface ProjectData {
   impact: string;
   prd: { title: string; sections: { heading: string; content: string }[] };
   useCase: { title: string; content: string };
+  featured?: boolean;
+  category?: string;
+  healthScore?: number;
+  detailHref?: string;
 }
 
 const projects: ProjectData[] = [
+  {
+    title: "DPDP Act Compliance Auditor",
+    icon: <ShieldCheck className="w-6 h-6" />,
+    category: "Agentic AI / RegTech",
+    healthScore: 87,
+    featured: true,
+    detailHref: "/case-studies#dpdp-sentinel",
+    problem: "Indian enterprises facing ₹250 Cr penalties under the new DPDP Act",
+    aiSolution: "Multi-Agent system automating PII detection across Indic languages",
+    impact: "90% reduction in compliance auditing time",
+    prd: {
+      title: "DPDP AI Privacy Sentinel — Product Requirements",
+      sections: [
+        { heading: "Problem Statement", content: "India's Digital Personal Data Protection (DPDP) Act exposes enterprises to penalties up to ₹250 Cr per violation. Most consent forms, support transcripts, and CRM exports are in regional languages — making manual PII audits impossibly slow and error-prone." },
+        { heading: "Council of Agents — Architecture", content: "Crawler Agent → discovers data sources (S3, GDrive, Jira, CRM).\nDetective Agent → scans content for PII across 6 Indic languages using fine-tuned NER.\nAuditor Agent → maps findings to DPDP clauses and computes a Compliance Health Score.\nRemediation Agent → drafts auto-remediation Jira tickets with redaction patches." },
+        { heading: "Human-in-the-Loop Gate", content: "All Remediation Agent outputs are blocked behind a Human-Authorized Remediation gate. A Data Protection Officer must explicitly approve each ticket before any production data is mutated. Every approval is cryptographically signed for audit trail." },
+        { heading: "Multilingual Voice Audit Hub", content: "Audit summaries are generated in Telugu, Tamil, Kannada, Malayalam, Hindi, and English — both as native-script text and TTS voice playback — so non-technical legal teams in regional offices can verify findings without translation overhead." },
+        { heading: "Success Metrics", content: "• 90% reduction in compliance auditing time vs. manual review.\n• 100% coverage of Indic-language consent forms.\n• Compliance Health Score adopted as board-level KPI.\n• Zero unauthorized auto-remediations (HITL gate enforced)." },
+      ],
+    },
+    useCase: {
+      title: "Killer Use Case",
+      content: "A Bengaluru-based fintech ingests 2M Tamil + Telugu support transcripts. The Council of Agents auto-discovers 14,000 PII exposures, scores compliance at 87/100, and drafts 312 remediation Jira tickets — all reviewed and approved by the DPO in a single afternoon instead of a 6-week manual audit.",
+    },
+  },
   {
     title: "Arogya Mitra AI",
     icon: <Activity className="w-6 h-6" />,
@@ -105,9 +135,23 @@ const ProjectsSection = () => {
           {projects.map((project, idx) => (
             <Card
               key={idx}
-              className="group bg-card/60 backdrop-blur border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_hsl(var(--primary)/0.15)] hover:scale-[1.03] flex flex-col"
+              className={
+                project.featured
+                  ? "group relative bg-card/60 backdrop-blur border-2 border-transparent [background:linear-gradient(hsl(var(--card)/0.6),hsl(var(--card)/0.6))_padding-box,linear-gradient(135deg,#6366f1,#8b5cf6)_border-box] transition-all duration-300 hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.5)] hover:scale-[1.03] flex flex-col"
+                  : "group bg-card/60 backdrop-blur border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_hsl(var(--primary)/0.15)] hover:scale-[1.03] flex flex-col"
+              }
             >
               <CardHeader className="pb-3">
+                {project.featured && (
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-gradient-to-r from-indigo-500 to-violet-500 text-white">
+                      Featured
+                    </span>
+                    {project.category && (
+                      <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{project.category}</span>
+                    )}
+                  </div>
+                )}
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2.5 rounded-lg bg-primary/10 text-primary">{project.icon}</div>
                   <CardTitle className="text-lg text-foreground font-heading">
@@ -119,6 +163,20 @@ const ProjectsSection = () => {
                   <span className="block"><strong className="text-foreground/70">AI Solution:</strong> {project.aiSolution}</span>
                   <span className="block"><strong className="text-primary/80">Impact:</strong> {project.impact}</span>
                 </CardDescription>
+                {project.featured && project.healthScore !== undefined && (
+                  <div className="mt-4 rounded-lg border border-violet-500/20 bg-gradient-to-r from-indigo-500/5 to-violet-500/5 p-3">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-violet-400">Compliance Health Score</span>
+                      <span className="text-sm font-bold text-foreground">{project.healthScore}/100</span>
+                    </div>
+                    <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+                        style={{ width: `${project.healthScore}%` }}
+                      />
+                    </div>
+                  </div>
+                )}
               </CardHeader>
 
               <CardContent className="mt-auto pt-2 flex gap-3">
@@ -131,14 +189,27 @@ const ProjectsSection = () => {
                   <FileText className="w-4 h-4" />
                   Read PRD
                 </Button>
-                <Button
-                  size="sm"
-                  className="flex-1 gap-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
-                  onClick={() => setActiveModal({ project: idx, type: "useCase" })}
-                >
-                  <Lightbulb className="w-4 h-4" />
-                  View Use Case
-                </Button>
+                {project.featured && project.detailHref ? (
+                  <Button
+                    size="sm"
+                    asChild
+                    className="flex-1 gap-2 bg-gradient-to-r from-indigo-500 to-violet-500 text-white hover:opacity-90 transition-all"
+                  >
+                    <Link to={project.detailHref}>
+                      <Lightbulb className="w-4 h-4" />
+                      Explore Case Study
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button
+                    size="sm"
+                    className="flex-1 gap-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                    onClick={() => setActiveModal({ project: idx, type: "useCase" })}
+                  >
+                    <Lightbulb className="w-4 h-4" />
+                    View Use Case
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
