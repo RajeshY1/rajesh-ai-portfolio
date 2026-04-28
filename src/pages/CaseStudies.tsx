@@ -20,10 +20,6 @@ import pmRag4 from "@/assets/pm-rag-4.png";
 import strategyAgent1 from "@/assets/strategy-agent-1.png";
 import strategyAgent2 from "@/assets/strategy-agent-2.png";
 
-import dpdpDashboard from "@/assets/dpdp-agentic-dashboard.png";
-import dpdpMultilingual from "@/assets/dpdp-multilingual-audit.png";
-import dpdpHitl from "@/assets/dpdp-hitl-approval-flow.png";
-
 const caseStudies = [
   {
     id: "dpdp-sentinel",
@@ -32,7 +28,12 @@ const caseStudies = [
     problem: "Indian enterprises face penalties up to ₹250 Cr under the new DPDP Act, but most consent forms and support transcripts are in regional languages — making manual PII audits impossibly slow.",
     solution: "Architected a Council of Agents (Crawler, Detective, Auditor, Remediation) that automates PII detection across 6 Indic languages and generates auto-remediation Jira tickets — gated by a Human-Authorized Remediation step.",
     metrics: ["90% reduction in compliance auditing time", "100% coverage of Indic-language consent forms", "Compliance Health Score adopted as board-level KPI"],
-    images: [dpdpDashboard, dpdpMultilingual, dpdpHitl],
+    images: [] as string[],
+    pendingAssets: [
+      "Agentic Dashboard",
+      "Multilingual Audit",
+      "Jira Workflow (HITL Approval)",
+    ],
     featured: true,
   },
   {
@@ -258,6 +259,23 @@ const CaseStudies = () => {
                               <img key={i} src={img} alt={`${cs.title} screenshot ${i + 1}`} className="w-full h-auto rounded-lg shadow-md border border-border object-cover" />
                             ))}
                           </div>
+                        </div>
+                      )}
+                      {cs.images.length === 0 && (cs as any).pendingAssets && (
+                        <div className="rounded-xl border-2 border-dashed border-violet-500/40 bg-violet-500/5 p-5">
+                          <h4 className="text-xs font-semibold uppercase tracking-wider text-violet-300 mb-2 font-heading">Awaiting Screenshots — Human-in-the-Loop</h4>
+                          <p className="text-foreground/80 text-sm leading-relaxed mb-3">
+                            Project updated. Please upload the {(cs as any).pendingAssets.length} screenshots for this project to complete the portfolio update.
+                          </p>
+                          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            {((cs as any).pendingAssets as string[]).map((label, i) => (
+                              <li key={i} className="rounded-lg border border-border/60 bg-background/40 p-4 text-center">
+                                <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Slot {i + 1}</div>
+                                <div className="text-sm font-semibold text-foreground">{label}</div>
+                                <div className="text-[11px] text-violet-300/80 mt-2">Upload pending</div>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       )}
                     </CardContent>
