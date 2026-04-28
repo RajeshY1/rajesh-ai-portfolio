@@ -137,7 +137,7 @@ const ProjectsSection = () => {
               key={idx}
               className={
                 project.featured
-                  ? "group relative bg-card/60 backdrop-blur border-2 border-transparent [background:linear-gradient(hsl(var(--card)/0.6),hsl(var(--card)/0.6))_padding-box,linear-gradient(135deg,#6366f1,#8b5cf6)_border-box] transition-all duration-300 hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.5)] hover:scale-[1.03] flex flex-col"
+                  ? "group relative bg-card/60 backdrop-blur border border-violet-500/40 hover:border-violet-400/70 transition-all duration-300 hover:shadow-[0_0_40px_-8px_rgba(139,92,246,0.45)] hover:scale-[1.03] flex flex-col"
                   : "group bg-card/60 backdrop-blur border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_hsl(var(--primary)/0.15)] hover:scale-[1.03] flex flex-col"
               }
             >
