@@ -20,10 +20,6 @@ import pmRag4 from "@/assets/pm-rag-4.png";
 import strategyAgent1 from "@/assets/strategy-agent-1.png";
 import strategyAgent2 from "@/assets/strategy-agent-2.png";
 
-import dpdpDashboard from "@/assets/dpdp-agentic-dashboard.png";
-import dpdpMultilingual from "@/assets/dpdp-multilingual-audit.png";
-import dpdpHitl from "@/assets/dpdp-hitl-approval-flow.png";
-
 const caseStudies = [
   {
     id: "dpdp-sentinel",
@@ -32,7 +28,12 @@ const caseStudies = [
     problem: "Indian enterprises face penalties up to ₹250 Cr under the new DPDP Act, but most consent forms and support transcripts are in regional languages — making manual PII audits impossibly slow.",
     solution: "Architected a Council of Agents (Crawler, Detective, Auditor, Remediation) that automates PII detection across 6 Indic languages and generates auto-remediation Jira tickets — gated by a Human-Authorized Remediation step.",
     metrics: ["90% reduction in compliance auditing time", "100% coverage of Indic-language consent forms", "Compliance Health Score adopted as board-level KPI"],
-    images: [dpdpDashboard, dpdpMultilingual, dpdpHitl],
+    images: [] as string[],
+    pendingAssets: [
+      "Agentic Dashboard",
+      "Multilingual Audit",
+      "Jira Workflow (HITL Approval)",
+    ],
     featured: true,
   },
   {
