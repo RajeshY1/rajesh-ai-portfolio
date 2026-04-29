@@ -17,12 +17,14 @@ interface ProjectData {
   category?: string;
   healthScore?: number;
   detailHref?: string;
+  slug?: string;
 }
 
 const projects: ProjectData[] = [
   {
     title: "DPDP Act Compliance Auditor",
     icon: <ShieldCheck className="w-6 h-6" />,
+    slug: "dpdp-compliance-auditor",
     category: "Agentic AI / RegTech",
     healthScore: 78,
     featured: true,
