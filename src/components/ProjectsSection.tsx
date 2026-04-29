@@ -141,7 +141,7 @@ const ProjectsSection = () => {
                 {project.featured && (
                   <div className="flex items-center justify-between mb-2">
                     <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-gradient-to-r from-indigo-500 to-violet-500 text-white">
-                      Featured
+                      Flagship Project
                     </span>
                     {project.category && (
                       <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{project.category}</span>
