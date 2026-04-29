@@ -178,19 +178,6 @@ const ProjectsSection = () => {
               </CardHeader>
 
               <CardContent className="mt-auto pt-2 flex flex-col gap-3">
-                {project.featured && (
-                  <div className="rounded-lg border border-primary/20 bg-primary/5 p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Lightbulb className="w-4 h-4 text-primary" />
-                      <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-                        {project.useCase.title}
-                      </span>
-                    </div>
-                    <p className="text-sm text-foreground/80 leading-relaxed">
-                      {project.useCase.content}
-                    </p>
-                  </div>
-                )}
                 <div className="flex gap-3">
                   <Button
                     variant="outline"
