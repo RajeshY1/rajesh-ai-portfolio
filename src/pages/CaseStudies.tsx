@@ -1,63 +1,9 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Activity, Brain, BarChart3, ShieldCheck } from "lucide-react";
-
-import arogyaImg1 from "@/assets/arogya-mitra-1.jpeg";
-import arogyaImg2 from "@/assets/arogya-mitra-2.jpeg";
-import arogyaImg3 from "@/assets/arogya-mitra-3.jpeg";
-import arogyaImg4 from "@/assets/arogya-mitra-4.jpeg";
-import arogyaImg5 from "@/assets/arogya-mitra-5.jpeg";
-import arogyaImg6 from "@/assets/arogya-mitra-6.jpeg";
-import arogyaImg7 from "@/assets/arogya-mitra-7.jpeg";
-
-import pmRag1 from "@/assets/pm-rag-1.png";
-import pmRag2 from "@/assets/pm-rag-2.png";
-import pmRag3 from "@/assets/pm-rag-3.png";
-import pmRag4 from "@/assets/pm-rag-4.png";
-
-import strategyAgent1 from "@/assets/strategy-agent-1.png";
-import strategyAgent2 from "@/assets/strategy-agent-2.png";
-
-import dpdpDashboard from "@/assets/dpdp-agentic-dashboard.png";
-import dpdpJira from "@/assets/dpdp-jira-workflow.png";
-
-const caseStudies = [
-  {
-    id: "dpdp-sentinel",
-    icon: <ShieldCheck className="w-7 h-7" />,
-    title: "DPDP AI Privacy Sentinel — Agentic Compliance Auditor",
-    problem: "Indian enterprises face penalties up to ₹250 Cr under the new DPDP Act, but most consent forms and support transcripts are in regional languages — making manual PII audits impossibly slow.",
-    solution: "Architected a Council of Agents (Crawler, Detective, Auditor, Remediation) that automates PII detection across 6 Indic languages and generates auto-remediation Jira tickets — gated by a Human-Authorized Remediation step.",
-    metrics: ["90% reduction in compliance auditing time", "100% coverage of Indic-language consent forms", "Compliance Health Score adopted as board-level KPI"],
-    images: [dpdpDashboard, dpdpJira],
-  },
-  {
-    icon: <Activity className="w-7 h-7" />,
-    title: "Arogya Mitra AI — Vernacular Prescription Translation",
-    problem: "Over 60% of rural patients in South India cannot read English-language prescriptions, leading to dangerous medication errors.",
-    solution: "Built an OCR + Multilingual LLM pipeline that photographs prescriptions and translates them into Telugu, Kannada, and Tamil with voice playback for low-literacy users.",
-    metrics: ["95% translation accuracy validated by pharmacists", "Voice playback for low-literacy users", "Works offline after initial model download"],
-    images: [arogyaImg1, arogyaImg2, arogyaImg3, arogyaImg4, arogyaImg5, arogyaImg6, arogyaImg7],
-  },
-  {
-    icon: <Brain className="w-7 h-7" />,
-    title: "PM-Insight — RAG-Powered PRD Assistant",
-    problem: "Product managers spend 40%+ of their time manually drafting PRDs by searching through scattered Confluence, Notion, and Slack documentation.",
-    solution: "Designed a context-aware RAG system with hybrid retrieval (semantic + BM25), Cohere re-ranking, and citation-linked responses that auto-generates structured PRDs.",
-    metrics: ["40% reduction in PRD drafting time", "Sub-30-second document generation", "Citation-linked outputs with source previews"],
-    images: [pmRag1, pmRag2, pmRag3, pmRag4],
-  },
-  {
-    icon: <BarChart3 className="w-7 h-7" />,
-    title: "AI Product Strategy Agent — Automated Go-To-Market & MVP Scoping",
-    problem: "Founders and PMs spend weeks doing manual market research, competitor analysis, and feature prioritization, often relying on biased gut feelings to answer: 'Is this worth building?' and 'What do we build first?'",
-    solution: "Architected an LLM-powered agentic workflow that takes user inputs (Startup Idea, Industry, Target Users) and autonomously analyzes market size, maps competitor feature gaps, and recommends data-driven business models.",
-    metrics: ["Reduced MVP scoping time from 2 weeks to 4 hours", "Automatically calculates Estimated TAM (e.g., $5B)", "Outputs prioritized MVP roadmap ready for engineering handoff"],
-    images: [strategyAgent1, strategyAgent2],
-  },
-];
+import { ArrowLeft } from "lucide-react";
+import CaseStudyCard from "@/components/CaseStudyCard";
+import { sortedCaseStudies } from "@/data/caseStudies";
 
 const CaseStudies = () => {
   useEffect(() => {
@@ -69,7 +15,6 @@ const CaseStudies = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <div className="border-b border-border bg-background/80 backdrop-blur-xl sticky top-0 z-50">
         <div className="container mx-auto flex h-16 items-center px-6">
           <Button variant="ghost" size="sm" asChild>
@@ -82,7 +27,6 @@ const CaseStudies = () => {
       </div>
 
       <section className="relative py-24 px-4">
-        {/* Glow */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
 
         <div className="max-w-5xl mx-auto relative z-10">
@@ -98,65 +42,14 @@ const CaseStudies = () => {
             </p>
           </div>
 
-          {/* Timeline layout */}
           <div className="relative">
             <div className="absolute left-8 top-0 bottom-0 w-px bg-border hidden md:block" />
 
             <div className="space-y-10">
-              {caseStudies.map((cs, idx) => (
-                <div key={idx} id={(cs as any).id} className="relative md:pl-20">
-                  {/* Timeline dot */}
+              {sortedCaseStudies.map((cs) => (
+                <div key={cs.slug} className="relative md:pl-20">
                   <div className="absolute left-6 top-8 h-4 w-4 rounded-full border-2 border-primary bg-background hidden md:block" />
-
-                  <Card className="bg-card/60 backdrop-blur border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.15)]">
-                    <CardHeader>
-                      <div className="flex items-center gap-3 mb-1">
-                        <div className="p-2.5 rounded-lg bg-primary/10 text-primary">{cs.icon}</div>
-                        <CardTitle className="text-xl text-foreground font-heading">{cs.title}</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div>
-                        <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-1 font-heading">Problem</h4>
-                        <p className="text-muted-foreground text-sm leading-relaxed">{cs.problem}</p>
-                      </div>
-                      <div>
-                        <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-1 font-heading">AI Solution</h4>
-                        <p className="text-muted-foreground text-sm leading-relaxed">{cs.solution}</p>
-                      </div>
-                      <div>
-                        <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-1 font-heading">Key Metrics</h4>
-                        <ul className="space-y-1">
-                          {cs.metrics.map((m, i) => (
-                            <li key={i} className="flex items-start gap-2 text-sm text-foreground/80">
-                              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                              {m}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      {cs.images.length > 0 && (
-                        <div>
-                          <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 font-heading">Screenshots</h4>
-                          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                            {cs.images.map((img, i) => (
-                              <img key={i} src={img} alt={`${cs.title} screenshot ${i + 1}`} className="w-full h-auto rounded-lg shadow-md border border-border object-cover" />
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                      {cs.images.length === 0 && (cs as any).imageSlots && (
-                        <div>
-                          <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2 font-heading">Screenshots</h4>
-                          <div className="grid grid-cols-2 gap-3">
-                            {Array.from({ length: (cs as any).imageSlots as number }).map((_, i) => (
-                              <div key={i} className="aspect-video rounded-lg border border-border bg-secondary/30" />
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
+                  <CaseStudyCard caseStudy={cs} />
                 </div>
               ))}
             </div>

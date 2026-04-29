@@ -17,19 +17,21 @@ interface ProjectData {
   category?: string;
   healthScore?: number;
   detailHref?: string;
+  slug?: string;
 }
 
 const projects: ProjectData[] = [
   {
     title: "DPDP Act Compliance Auditor",
     icon: <ShieldCheck className="w-6 h-6" />,
+    slug: "dpdp-compliance-auditor",
     category: "Agentic AI / RegTech",
-    healthScore: 87,
+    healthScore: 78,
     featured: true,
-    detailHref: "/case-studies#dpdp-sentinel",
-    problem: "Indian enterprises facing ₹250 Cr penalties under the new DPDP Act",
-    aiSolution: "Multi-Agent system automating PII detection across Indic languages",
-    impact: "90% reduction in compliance auditing time",
+    detailHref: "/projects/dpdp-compliance-auditor",
+    problem: "DPDP Act penalties up to ₹250 Cr; no real-time visibility into PII or consent",
+    aiSolution: "Agentic system auditing PII flows + multilingual consent with HITL review",
+    impact: "~60% reduction in manual audit effort (simulated)",
     prd: {
       title: "DPDP AI Privacy Sentinel — Product Requirements",
       sections: [
@@ -112,7 +114,12 @@ type ModalType = "prd" | "useCase";
 
 const ProjectsSection = () => {
   const [activeModal, setActiveModal] = useState<{ project: number; type: ModalType } | null>(null);
-  const activeProject = activeModal !== null ? projects[activeModal.project] : null;
+  const sortedProjects = [...projects].sort((a, b) => {
+    if (a.slug === "dpdp-compliance-auditor") return -1;
+    if (b.slug === "dpdp-compliance-auditor") return 1;
+    return 0;
+  });
+  const activeProject = activeModal !== null ? sortedProjects[activeModal.project] : null;
 
   return (
     <section id="projects" className="relative border-t border-border py-24 px-4">
@@ -132,7 +139,7 @@ const ProjectsSection = () => {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, idx) => (
+          {sortedProjects.map((project, idx) => (
             <Card
               key={idx}
               className="group bg-card/60 backdrop-blur border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_hsl(var(--primary)/0.15)] hover:scale-[1.03] flex flex-col"
@@ -141,7 +148,7 @@ const ProjectsSection = () => {
                 {project.featured && (
                   <div className="flex items-center justify-between mb-2">
                     <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-gradient-to-r from-indigo-500 to-violet-500 text-white">
-                      Featured
+                      Flagship Project
                     </span>
                     {project.category && (
                       <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{project.category}</span>
