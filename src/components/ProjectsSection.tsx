@@ -24,12 +24,12 @@ const projects: ProjectData[] = [
     title: "DPDP Act Compliance Auditor",
     icon: <ShieldCheck className="w-6 h-6" />,
     category: "Agentic AI / RegTech",
-    healthScore: 87,
+    healthScore: 78,
     featured: true,
-    detailHref: "/case-studies#dpdp-sentinel",
-    problem: "Indian enterprises facing ₹250 Cr penalties under the new DPDP Act",
-    aiSolution: "Multi-Agent system automating PII detection across Indic languages",
-    impact: "90% reduction in compliance auditing time",
+    detailHref: "/projects/dpdp-compliance-auditor",
+    problem: "DPDP Act penalties up to ₹250 Cr; no real-time visibility into PII or consent",
+    aiSolution: "Agentic system auditing PII flows + multilingual consent with HITL review",
+    impact: "~60% reduction in manual audit effort (simulated)",
     prd: {
       title: "DPDP AI Privacy Sentinel — Product Requirements",
       sections: [
