@@ -146,10 +146,7 @@ const ProjectsSection = () => {
             >
               <CardHeader className="pb-3">
                 {project.featured && (
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-gradient-to-r from-indigo-500 to-violet-500 text-white">
-                      Flagship Project
-                    </span>
+                  <div className="flex items-center justify-end mb-2">
                     {project.category && (
                       <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{project.category}</span>
                     )}
@@ -183,35 +180,38 @@ const ProjectsSection = () => {
               </CardHeader>
 
               <CardContent className="mt-auto pt-2 flex gap-3">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex-1 gap-2 border-primary/20 text-primary hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition-all"
-                  onClick={() => setActiveModal({ project: idx, type: "prd" })}
-                >
-                  <FileText className="w-4 h-4" />
-                  Read PRD
-                </Button>
-                {project.featured && project.detailHref ? (
-                  <Button
-                    size="sm"
-                    asChild
-                    className="flex-1 gap-2 bg-gradient-to-r from-indigo-500 to-violet-500 text-white hover:opacity-90 transition-all"
-                  >
-                    <Link to={project.detailHref}>
-                      <Lightbulb className="w-4 h-4" />
-                      Explore Case Study
-                    </Link>
-                  </Button>
+                {project.featured ? (
+                  <div className="flex-1 rounded-lg border border-primary/20 bg-primary/5 p-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Lightbulb className="w-4 h-4 text-primary" />
+                      <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                        {project.useCase.title}
+                      </span>
+                    </div>
+                    <p className="text-sm text-foreground/80 leading-relaxed">
+                      {project.useCase.content}
+                    </p>
+                  </div>
                 ) : (
-                  <Button
-                    size="sm"
-                    className="flex-1 gap-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
-                    onClick={() => setActiveModal({ project: idx, type: "useCase" })}
-                  >
-                    <Lightbulb className="w-4 h-4" />
-                    View Use Case
-                  </Button>
+                  <>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex-1 gap-2 border-primary/20 text-primary hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition-all"
+                      onClick={() => setActiveModal({ project: idx, type: "prd" })}
+                    >
+                      <FileText className="w-4 h-4" />
+                      Read PRD
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="flex-1 gap-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                      onClick={() => setActiveModal({ project: idx, type: "useCase" })}
+                    >
+                      <Lightbulb className="w-4 h-4" />
+                      View Use Case
+                    </Button>
+                  </>
                 )}
               </CardContent>
             </Card>
