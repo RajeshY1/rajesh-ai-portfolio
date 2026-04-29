@@ -145,11 +145,9 @@ const ProjectsSection = () => {
               className="group bg-card/60 backdrop-blur border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_hsl(var(--primary)/0.15)] hover:scale-[1.03] flex flex-col"
             >
               <CardHeader className="pb-3">
-                {project.featured && (
+                {project.featured && project.category && (
                   <div className="flex items-center justify-end mb-2">
-                    {project.category && (
-                      <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{project.category}</span>
-                    )}
+                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground">{project.category}</span>
                   </div>
                 )}
                 <div className="flex items-center gap-3 mb-2">
@@ -179,9 +177,9 @@ const ProjectsSection = () => {
                 )}
               </CardHeader>
 
-              <CardContent className="mt-auto pt-2 flex gap-3">
-                {project.featured ? (
-                  <div className="flex-1 rounded-lg border border-primary/20 bg-primary/5 p-4">
+              <CardContent className="mt-auto pt-2 flex flex-col gap-3">
+                {project.featured && (
+                  <div className="rounded-lg border border-primary/20 bg-primary/5 p-4">
                     <div className="flex items-center gap-2 mb-2">
                       <Lightbulb className="w-4 h-4 text-primary" />
                       <span className="text-xs font-semibold uppercase tracking-wider text-primary">
@@ -192,27 +190,26 @@ const ProjectsSection = () => {
                       {project.useCase.content}
                     </p>
                   </div>
-                ) : (
-                  <>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1 gap-2 border-primary/20 text-primary hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition-all"
-                      onClick={() => setActiveModal({ project: idx, type: "prd" })}
-                    >
-                      <FileText className="w-4 h-4" />
-                      Read PRD
-                    </Button>
-                    <Button
-                      size="sm"
-                      className="flex-1 gap-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
-                      onClick={() => setActiveModal({ project: idx, type: "useCase" })}
-                    >
-                      <Lightbulb className="w-4 h-4" />
-                      View Use Case
-                    </Button>
-                  </>
                 )}
+                <div className="flex gap-3">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex-1 gap-2 border-primary/20 text-primary hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition-all"
+                    onClick={() => setActiveModal({ project: idx, type: "prd" })}
+                  >
+                    <FileText className="w-4 h-4" />
+                    Read PRD
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="flex-1 gap-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                    onClick={() => setActiveModal({ project: idx, type: "useCase" })}
+                  >
+                    <Lightbulb className="w-4 h-4" />
+                    View Use Case
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
