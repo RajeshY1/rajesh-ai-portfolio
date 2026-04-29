@@ -114,7 +114,12 @@ type ModalType = "prd" | "useCase";
 
 const ProjectsSection = () => {
   const [activeModal, setActiveModal] = useState<{ project: number; type: ModalType } | null>(null);
-  const activeProject = activeModal !== null ? projects[activeModal.project] : null;
+  const sortedProjects = [...projects].sort((a, b) => {
+    if (a.slug === "dpdp-compliance-auditor") return -1;
+    if (b.slug === "dpdp-compliance-auditor") return 1;
+    return 0;
+  });
+  const activeProject = activeModal !== null ? sortedProjects[activeModal.project] : null;
 
   return (
     <section id="projects" className="relative border-t border-border py-24 px-4">
@@ -134,7 +139,7 @@ const ProjectsSection = () => {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, idx) => (
+          {sortedProjects.map((project, idx) => (
             <Card
               key={idx}
               className="group bg-card/60 backdrop-blur border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_hsl(var(--primary)/0.15)] hover:scale-[1.03] flex flex-col"
