@@ -116,10 +116,19 @@ type ModalType = "prd" | "useCase";
 const ProjectsSection = () => {
   const [activeModal, setActiveModal] = useState<{ project: number; type: ModalType } | null>(null);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
-  const [mapping, setMapping] = useState<Record<string, string>>(() => getVideoMapping());
+  const DEFAULT_MAPPING: Record<string, string> = {
+    "DPDP Act Compliance Auditor": "DPDP_Compliance_Auditor_Demo.mp4",
+    "Arogya Mitra AI": "Arogya_Mithra_AI.mp4",
+    "PM-Insight RAG Assistant": "AI_Product_Requirement_Assistant.mp4",
+    "AI Product Strategy Agent": "AI_Product_Strategy_Agent_Demo.mp4",
+  };
+  const [mapping, setMapping] = useState<Record<string, string>>(() => ({
+    ...DEFAULT_MAPPING,
+    ...getVideoMapping(),
+  }));
 
   useEffect(() => {
-    const handler = () => setMapping(getVideoMapping());
+    const handler = () => setMapping({ ...DEFAULT_MAPPING, ...getVideoMapping() });
     window.addEventListener("videoMappingUpdated", handler);
     window.addEventListener("storage", handler);
     return () => {
