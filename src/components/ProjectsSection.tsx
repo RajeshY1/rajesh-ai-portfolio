@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { FileText, Lightbulb, Activity, Brain, BarChart3, ShieldCheck } from "lucide-react";
+import { FileText, Lightbulb, Activity, Brain, BarChart3, ShieldCheck, PlayCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getVideoMapping } from "@/components/VideoAssignmentWizard";
 
 interface ProjectData {
   title: string;
@@ -114,6 +115,19 @@ type ModalType = "prd" | "useCase";
 
 const ProjectsSection = () => {
   const [activeModal, setActiveModal] = useState<{ project: number; type: ModalType } | null>(null);
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [mapping, setMapping] = useState<Record<string, string>>(() => getVideoMapping());
+
+  useEffect(() => {
+    const handler = () => setMapping(getVideoMapping());
+    window.addEventListener("videoMappingUpdated", handler);
+    window.addEventListener("storage", handler);
+    return () => {
+      window.removeEventListener("videoMappingUpdated", handler);
+      window.removeEventListener("storage", handler);
+    };
+  }, []);
+
   const sortedProjects = [...projects].sort((a, b) => {
     if (a.slug === "dpdp-compliance-auditor") return -1;
     if (b.slug === "dpdp-compliance-auditor") return 1;
@@ -197,6 +211,16 @@ const ProjectsSection = () => {
                     View Use Case
                   </Button>
                 </div>
+                {mapping[project.title] && (
+                  <Button
+                    size="sm"
+                    className="w-full gap-2 bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
+                    onClick={() => setVideoSrc(`/assets/${mapping[project.title]}`)}
+                  >
+                    <PlayCircle className="w-4 h-4" />
+                    Watch Demo
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
@@ -239,6 +263,25 @@ const ProjectsSection = () => {
                 )}
               </div>
             </>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={videoSrc !== null} onOpenChange={(open) => !open && setVideoSrc(null)}>
+        <DialogContent className="max-w-4xl bg-card border-border/60 p-2 sm:p-4 backdrop-blur">
+          <DialogHeader className="sr-only">
+            <DialogTitle>Project Demo Video</DialogTitle>
+            <DialogDescription>Video player</DialogDescription>
+          </DialogHeader>
+          {videoSrc && (
+            <video
+              key={videoSrc}
+              src={videoSrc}
+              autoPlay
+              muted
+              controls
+              className="w-full h-auto rounded-md"
+            />
           )}
         </DialogContent>
       </Dialog>
