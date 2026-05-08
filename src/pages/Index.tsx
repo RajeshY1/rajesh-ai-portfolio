@@ -7,6 +7,7 @@ import StackSection from "@/components/StackSection";
 import CareerSection from "@/components/CareerSection";
 import WhyHireMeSection from "@/components/WhyHireMeSection";
 import Footer from "@/components/Footer";
+import VideoAssignmentWizard from "@/components/VideoAssignmentWizard";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       <CareerSection />
       <WhyHireMeSection />
       <Footer />
+      <VideoAssignmentWizard />
     </div>
   );
 };
