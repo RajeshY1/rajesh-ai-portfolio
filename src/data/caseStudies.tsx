@@ -34,6 +34,8 @@ export interface CaseStudy {
   solution: string;
   metrics: string[];
   images: string[];
+  /** Architecture / workflow diagrams shown on the detail page */
+  diagrams?: { src: string; caption: string }[];
   /** Optional extended sections shown on the detail page only */
   sections?: CaseStudySection[];
   /** SEO */
@@ -58,6 +60,9 @@ export const caseStudies: CaseStudy[] = [
       "Enables continuous governance instead of periodic audits",
     ],
     images: [dpdpDashboard, dpdpJira],
+    diagrams: [
+      { src: "/assets/diagrams/dpdp-workflow.png", caption: "DPDP Act Compliance Auditor — Agentic workflow (n8n)" },
+    ],
     sections: [
       {
         heading: "Architecture",
@@ -100,6 +105,15 @@ export const caseStudies: CaseStudy[] = [
       "Works offline after initial model download",
     ],
     images: [arogyaImg1, arogyaImg2, arogyaImg3, arogyaImg4, arogyaImg5, arogyaImg6, arogyaImg7],
+    diagrams: [
+      { src: "/assets/diagrams/arogya-1.jpeg", caption: "Arogya Mitra — Prescription OCR pipeline" },
+      { src: "/assets/diagrams/arogya-2.jpeg", caption: "Multilingual translation flow" },
+      { src: "/assets/diagrams/arogya-3.jpeg", caption: "Vernacular voice playback architecture" },
+      { src: "/assets/diagrams/arogya-4.jpeg", caption: "Healthcare data flow" },
+      { src: "/assets/diagrams/arogya-5.jpeg", caption: "Patient interaction sequence" },
+      { src: "/assets/diagrams/arogya-6.jpeg", caption: "Pharmacist validation loop" },
+      { src: "/assets/diagrams/arogya-7.jpeg", caption: "Offline model fallback" },
+    ],
     seo: {
       title: "Arogya Mitra AI | Vernacular Prescription Translation",
       description:
@@ -121,6 +135,12 @@ export const caseStudies: CaseStudy[] = [
       "Citation-linked outputs with source previews",
     ],
     images: [pmRag1, pmRag2, pmRag3, pmRag4],
+    diagrams: [
+      { src: "/assets/diagrams/pm-rag-1.png", caption: "Flowise RAG orchestration" },
+      { src: "/assets/diagrams/pm-rag-2.png", caption: "Hybrid retrieval (semantic + BM25)" },
+      { src: "/assets/diagrams/pm-rag-3.png", caption: "Groq inference + Cohere re-ranking" },
+      { src: "/assets/diagrams/pm-rag-4.png", caption: "Citation-linked PRD generation flow" },
+    ],
     seo: {
       title: "PM-Insight | RAG-Powered PRD Assistant",
       description:
@@ -142,6 +162,10 @@ export const caseStudies: CaseStudy[] = [
       "Outputs prioritized MVP roadmap ready for engineering handoff",
     ],
     images: [strategyAgent1, strategyAgent2],
+    diagrams: [
+      { src: "/assets/diagrams/strategy-agent-1.png", caption: "AI Product Strategy Agent — agentic workflow" },
+      { src: "/assets/diagrams/strategy-agent-2.png", caption: "MVP roadmap & TAM scoring pipeline" },
+    ],
     seo: {
       title: "AI Product Strategy Agent | Automated GTM & MVP Scoping",
       description:
